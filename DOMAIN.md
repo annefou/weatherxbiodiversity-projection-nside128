@@ -21,8 +21,9 @@ When the user asks Claude to set up a typical analysis, the default tools to sug
 | Marine reanalysis | `copernicusmarine` | credentials at `~/.copernicusmarine/.copernicusmarine-credentials` |
 | Climate Digital Twin (~5 km, daily) | `polytope-client` or `earthkit-data` | Destination Earth Climate DT — needs DestinE Data Lake account |
 | Biodiversity occurrences | `pygbif` | always mint a download DOI per query |
-| Spherical pixelisation | `healpy` (HEALPix) | **always pass `nest=True`** — see below |
-| HEALPix + cartopy | `healpix-plot` (EOPF-DGGS) | replaces ad-hoc ang2pix + pcolormesh bridges |
+| HEALPix on geographic data (Earth) | `healpix-geo` (EOPF-DGGS) | **default for biodiversity / climate / EO work** — geo-aware: WGS84 ellipsoidal corrections, cartopy integration, xarray-friendly. Always pass `nest=True` — see below. |
+| HEALPix on pure-sphere (astrophysics, sky maps) | `healpy` | The astrophysics-original library. Theta/phi colatitudes, no CRS. Use only when the data has no terrestrial coordinate system (e.g. CMB, sky surveys). |
+| HEALPix + cartopy visualisation | `healpix-plot` (EOPF-DGGS) | Replaces ad-hoc ang2pix + pcolormesh bridges. |
 | Discrete Global Grid Systems | `xdggs`, `dggrid4py`, `h3`, `rhealpixdggs` | DGGRID v8.41 only (v8.42+ breaks under modern GCC) |
 | Map projections | `pyproj`, `cartopy` | |
 | Raster / vector I/O | `rasterio`, `geopandas` | |
@@ -34,15 +35,24 @@ Pin every dependency in `environment.yml` — pangeo dev environments hide missi
 
 ### HEALPix is always NESTED, never RING
 
-Every `healpy` call in this domain MUST use `nest=True`. NESTED is the only ordering that supports hierarchical bit-shift refinement (parent = `pix >> 2`, children = `pix << 2 | k`) and is the optimal ordering for zoom-in / zoom-out operations across spatial scales.
+Every HEALPix call in this domain MUST use NESTED ordering. NESTED is the only ordering that supports hierarchical bit-shift refinement (parent = `pix >> 2`, children = `pix << 2 | k`) and is the optimal ordering for zoom-in / zoom-out operations across spatial scales.
+
+For **geographic** data (the typical case in this domain — biodiversity, climate, earth observation), prefer `healpix-geo` over `healpy`. `healpix-geo` is geo-aware (WGS84 ellipsoidal corrections, cartopy integration, xarray-friendly); `healpy` is the astrophysics-original library and assumes a pure mathematical sphere.
 
 ```python
+# Geographic / Earth data — use healpix-geo (default in this domain):
+import healpix_geo as hg
+hg.ang2pix(nside, lon, lat, nest=True)        # geographic lon/lat, not theta/phi
+hg.pix2ang(nside, pix, nest=True)             # returns geographic lon/lat
+
+# Pure-sphere / astrophysics — use healpy with nest=True:
+import healpy as hp
 hp.ang2pix(nside, theta, phi, nest=True)
 hp.pix2ang(nside, pix, nest=True)
 hp.boundaries(nside, pix, step=N, nest=True)
 ```
 
-Mixing RING and NESTED in the same workflow makes cell indices incompatible and breaks tile-based / hierarchical operations. Treat NESTED as a project-wide convention, not a per-notebook choice.
+Mixing RING and NESTED in the same workflow makes cell indices incompatible and breaks tile-based / hierarchical operations. Mixing `healpy` and `healpix-geo` in the same workflow is also a mistake — they index pixels the same way (NESTED is consistent across both), but the coordinate semantics differ (theta/phi vs lon/lat); pick one and stay consistent. Default to `healpix-geo` for any work over Earth's surface.
 
 If a notebook needs RING (e.g. for spherical-harmonic transforms via `hp.map2alm`), do the SHT work in a clearly-scoped block, but keep the on-disk pixelisation NESTED.
 

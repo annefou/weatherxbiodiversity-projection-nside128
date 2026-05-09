@@ -28,7 +28,8 @@ dependencies:
   # - netcdf4                 # NetCDF I/O
   # - cdsapi                  # Copernicus Climate Data Store
   # - copernicusmarine        # Copernicus Marine Service
-  # - healpy                  # HEALPix (use nest=True — see DOMAIN.md)
+  # - healpix-geo             # HEALPix on geo data — preferred (use nest=True — see DOMAIN.md)
+  # - healpy                  # HEALPix on pure-sphere (astrophysics) only
   # - rasterio                # raster I/O
   # - geopandas               # vector I/O
   # - dask                    # out-of-core / parallel
