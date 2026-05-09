@@ -16,7 +16,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Skip CI if template has not been initialised
+        id: guard
+        run: |
+          if grep -rln '{{[A-Z_]\+}}' . --include='*.md' --include='*.yml' --include='*.yaml' --include='*.json' --include='*.cff' --include='*.py' 2>/dev/null | grep -v '^./.claude/skills/init-template/' | head -1 > /dev/null; then
+            echo "::notice::Template placeholders detected ({{...}} tokens). Run /init-template inside Claude Code (or substitute manually) before CI runs meaningfully. Skipping the rest of this workflow."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Set up Micromamba
+        if: steps.guard.outputs.skip != 'true'
         uses: mamba-org/setup-micromamba@v3
         with:
           environment-file: environment.yml
@@ -49,11 +60,12 @@ jobs:
       #     key: input-data-v1
 
       - name: Run pipeline
+        if: steps.guard.outputs.skip != 'true'
         shell: micromamba-shell {0}
         run: snakemake --cores 1
 
       - name: Upload results
-        if: always()
+        if: always() && steps.guard.outputs.skip != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: ci-outputs

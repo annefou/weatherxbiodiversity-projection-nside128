@@ -17,10 +17,23 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      skip: ${{ steps.guard.outputs.skip }}
     steps:
       - uses: actions/checkout@v4
 
+      - name: Skip if template has not been initialised
+        id: guard
+        run: |
+          if grep -rln '{{[A-Z_]\+}}' . --include='*.md' --include='*.yml' --include='*.yaml' --include='*.json' --include='*.cff' --include='*.py' 2>/dev/null | grep -v '^./.claude/skills/init-template/' | head -1 > /dev/null; then
+            echo "::notice::Template placeholders detected ({{...}} tokens). Run /init-template inside Claude Code (or substitute manually) before the Jupyter Book builds meaningfully. Skipping."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Set up Micromamba
+        if: steps.guard.outputs.skip != 'true'
         uses: mamba-org/setup-micromamba@v3
         with:
           environment-file: environment.yml
@@ -29,6 +42,7 @@ jobs:
           cache-environment: true
 
       - name: Convert .py notebooks to .ipynb
+        if: steps.guard.outputs.skip != 'true'
         shell: micromamba-shell {0}
         run: |
           for nb in notebooks/*.py; do
@@ -37,6 +51,7 @@ jobs:
 
       # Glob, not a hard-coded list — new notebooks are picked up automatically.
       - name: Execute notebooks
+        if: steps.guard.outputs.skip != 'true'
         shell: micromamba-shell {0}
         run: |
           for nb in notebooks/*.ipynb; do
@@ -46,13 +61,16 @@ jobs:
           done
 
       - uses: actions/setup-node@v4
+        if: steps.guard.outputs.skip != 'true'
         with:
           node-version: 22.x
 
       - name: Install MyST
+        if: steps.guard.outputs.skip != 'true'
         run: npm install -g mystmd
 
       - name: Build MyST site
+        if: steps.guard.outputs.skip != 'true'
         env:
           # MyST silently ignores `base_url` in myst.yml — only this env var
           # works. See docs/cicd-conventions.md.
@@ -60,12 +78,14 @@ jobs:
         run: myst build --html
 
       - name: Upload pages artifact
+        if: steps.guard.outputs.skip != 'true'
         uses: actions/upload-pages-artifact@v4
         with:
           path: _build/html
 
   deploy:
     needs: build
+    if: needs.build.outputs.skip != 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
