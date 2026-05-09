@@ -1,0 +1,77 @@
+name: Build and Deploy Jupyter Book
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Micromamba
+        uses: mamba-org/setup-micromamba@v3
+        with:
+          environment-file: environment.yml
+          environment-name: ${{ github.event.repository.name }}
+          init-shell: bash
+          cache-environment: true
+
+      - name: Convert .py notebooks to .ipynb
+        shell: micromamba-shell {0}
+        run: |
+          for nb in notebooks/*.py; do
+            jupytext --to notebook "$nb"
+          done
+
+      # Glob, not a hard-coded list — new notebooks are picked up automatically.
+      - name: Execute notebooks
+        shell: micromamba-shell {0}
+        run: |
+          for nb in notebooks/*.ipynb; do
+            echo "::group::Executing $nb"
+            jupyter execute --inplace "$nb"
+            echo "::endgroup::"
+          done
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      - name: Install MyST
+        run: npm install -g mystmd
+
+      - name: Build MyST site
+        env:
+          # MyST silently ignores `base_url` in myst.yml — only this env var
+          # works. See docs/cicd-conventions.md.
+          BASE_URL: /${{ github.event.repository.name }}
+        run: myst build --html
+
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _build/html
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
