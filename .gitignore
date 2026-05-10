@@ -29,8 +29,19 @@ data/*
 !data/precomputed/**
 
 # Tier 2 — DestinE Climate DT (licence-locked redistribution)
-# Out of scope for this repo's initial dispatch but future-proofed.
+# Raw NetCDF extracts and per-cell rasters approach a climate fingerprint;
+# only the aggregated species-level summary JSON + the figures are committed.
 data/destine/
+# Future TEI/PEI rasters (DestinE-derived; matches *future*_healpix.nc and
+# any future variants).
+healpix_port/outputs_iberia/*future*
+# Per-cell projection rasters at any resolution. Globbed pattern so
+# higher-resolution outputs added later are also automatically covered.
+results/projection_*.nc
+results/projection_per_cell_*.npy
+# Allow only the headline JSON (aggregated to species level — explicitly
+# committable per the licence boundary).
+!results/projection_headline.json
 
 # Paper PDFs (single PDF allowed; subfolder build artefacts ignored)
 paper/_build/

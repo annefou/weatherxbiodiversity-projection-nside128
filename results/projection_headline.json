@@ -1,0 +1,562 @@
+{
+  "horizons": {
+    "2020_2029": {
+      "n_draws": 1000,
+      "species_ranked": [
+        {
+          "species": "mucidus",
+          "post_mean_eta": 7.827765881135321,
+          "eta_hdi95_low": 2.9268710060716776,
+          "eta_hdi95_high": 12.539765346024138,
+          "n_cells": 7,
+          "n_cells_eta_gt_0": 5
+        },
+        {
+          "species": "jonellus",
+          "post_mean_eta": 7.7669648425305144,
+          "eta_hdi95_low": 2.2505192962154754,
+          "eta_hdi95_high": 13.499339384659345,
+          "n_cells": 6,
+          "n_cells_eta_gt_0": 5
+        },
+        {
+          "species": "pyrenaeus",
+          "post_mean_eta": 6.715509779446428,
+          "eta_hdi95_low": 1.6430310962907582,
+          "eta_hdi95_high": 11.751499129501036,
+          "n_cells": 4,
+          "n_cells_eta_gt_0": 3
+        },
+        {
+          "species": "mesomelas",
+          "post_mean_eta": 6.46250091449641,
+          "eta_hdi95_low": 2.856025050840905,
+          "eta_hdi95_high": 10.241293556150847,
+          "n_cells": 13,
+          "n_cells_eta_gt_0": 9
+        },
+        {
+          "species": "mendax",
+          "post_mean_eta": 5.893405014085232,
+          "eta_hdi95_low": 2.8812536871506556,
+          "eta_hdi95_high": 9.452577004664985,
+          "n_cells": 4,
+          "n_cells_eta_gt_0": 2
+        },
+        {
+          "species": "sicheli",
+          "post_mean_eta": 5.744279105439541,
+          "eta_hdi95_low": 0.8033510088883558,
+          "eta_hdi95_high": 10.978202980916178,
+          "n_cells": 8,
+          "n_cells_eta_gt_0": 7
+        },
+        {
+          "species": "sylvestris",
+          "post_mean_eta": 5.572911532864313,
+          "eta_hdi95_low": 0.4563116072568811,
+          "eta_hdi95_high": 10.809354509767667,
+          "n_cells": 9,
+          "n_cells_eta_gt_0": 6
+        },
+        {
+          "species": "monticola",
+          "post_mean_eta": 5.258785608158436,
+          "eta_hdi95_low": 2.2580609502716897,
+          "eta_hdi95_high": 9.384664633182906,
+          "n_cells": 6,
+          "n_cells_eta_gt_0": 4
+        },
+        {
+          "species": "wurflenii",
+          "post_mean_eta": 5.110473515619382,
+          "eta_hdi95_low": 1.2492645485794998,
+          "eta_hdi95_high": 8.868492850925493,
+          "n_cells": 14,
+          "n_cells_eta_gt_0": 10
+        },
+        {
+          "species": "soroeensis",
+          "post_mean_eta": 3.6666933503234507,
+          "eta_hdi95_low": 0.5746864899302678,
+          "eta_hdi95_high": 6.730456617947676,
+          "n_cells": 17,
+          "n_cells_eta_gt_0": 11
+        },
+        {
+          "species": "ruderarius",
+          "post_mean_eta": 3.1526004715076983,
+          "eta_hdi95_low": 1.00617109291693,
+          "eta_hdi95_high": 5.359708354280579,
+          "n_cells": 29,
+          "n_cells_eta_gt_0": 18
+        },
+        {
+          "species": "muscorum",
+          "post_mean_eta": 3.1235342935270123,
+          "eta_hdi95_low": 1.397230713416402,
+          "eta_hdi95_high": 4.789432903984824,
+          "n_cells": 43,
+          "n_cells_eta_gt_0": 31
+        },
+        {
+          "species": "humilis",
+          "post_mean_eta": 2.943887849133908,
+          "eta_hdi95_low": 1.2803704758156729,
+          "eta_hdi95_high": 4.675301290945347,
+          "n_cells": 43,
+          "n_cells_eta_gt_0": 25
+        },
+        {
+          "species": "magnus",
+          "post_mean_eta": 2.0829513681837626,
+          "eta_hdi95_low": -0.42000553291061415,
+          "eta_hdi95_high": 4.537799010190612,
+          "n_cells": 16,
+          "n_cells_eta_gt_0": 6
+        },
+        {
+          "species": "sylvarum",
+          "post_mean_eta": 1.957384352455309,
+          "eta_hdi95_low": 0.3258989234600811,
+          "eta_hdi95_high": 3.8403644247712747,
+          "n_cells": 35,
+          "n_cells_eta_gt_0": 19
+        },
+        {
+          "species": "lucorum",
+          "post_mean_eta": 1.7969192375731617,
+          "eta_hdi95_low": 0.08956335081794042,
+          "eta_hdi95_high": 3.4918497106731183,
+          "n_cells": 50,
+          "n_cells_eta_gt_0": 29
+        },
+        {
+          "species": "vestalis",
+          "post_mean_eta": 1.676680962531823,
+          "eta_hdi95_low": -0.834548935870218,
+          "eta_hdi95_high": 3.993967786734572,
+          "n_cells": 24,
+          "n_cells_eta_gt_0": 11
+        },
+        {
+          "species": "lapidarius",
+          "post_mean_eta": 1.663443921993396,
+          "eta_hdi95_low": -0.22229189783584274,
+          "eta_hdi95_high": 3.5564128539656474,
+          "n_cells": 57,
+          "n_cells_eta_gt_0": 31
+        },
+        {
+          "species": "hortorum",
+          "post_mean_eta": 1.4198566372674968,
+          "eta_hdi95_low": 0.11042561890105229,
+          "eta_hdi95_high": 2.685563675180475,
+          "n_cells": 65,
+          "n_cells_eta_gt_0": 39
+        },
+        {
+          "species": "ruderatus",
+          "post_mean_eta": 1.383158804699942,
+          "eta_hdi95_low": 0.19218459064257024,
+          "eta_hdi95_high": 2.544740114925319,
+          "n_cells": 75,
+          "n_cells_eta_gt_0": 44
+        },
+        {
+          "species": "rupestris",
+          "post_mean_eta": 1.307877957206205,
+          "eta_hdi95_low": -0.7413684763014705,
+          "eta_hdi95_high": 3.8350839126969323,
+          "n_cells": 15,
+          "n_cells_eta_gt_0": 8
+        },
+        {
+          "species": "subterraneus",
+          "post_mean_eta": 1.1488398306975676,
+          "eta_hdi95_low": -1.7319454811230972,
+          "eta_hdi95_high": 3.7139500357505715,
+          "n_cells": 6,
+          "n_cells_eta_gt_0": 3
+        },
+        {
+          "species": "bohemicus",
+          "post_mean_eta": 1.0603816592559485,
+          "eta_hdi95_low": -1.7333999878479849,
+          "eta_hdi95_high": 3.951694100262444,
+          "n_cells": 11,
+          "n_cells_eta_gt_0": 6
+        },
+        {
+          "species": "barbutellus",
+          "post_mean_eta": 0.6320030615208723,
+          "eta_hdi95_low": -0.5795097023005487,
+          "eta_hdi95_high": 1.5691460129873784,
+          "n_cells": 21,
+          "n_cells_eta_gt_0": 10
+        },
+        {
+          "species": "pascuorum",
+          "post_mean_eta": 0.0685140905695126,
+          "eta_hdi95_low": -1.192606545744674,
+          "eta_hdi95_high": 1.1872010821746664,
+          "n_cells": 111,
+          "n_cells_eta_gt_0": 47
+        },
+        {
+          "species": "pratorum",
+          "post_mean_eta": 0.03803592300834264,
+          "eta_hdi95_low": -1.727960325918484,
+          "eta_hdi95_high": 1.6127853211015668,
+          "n_cells": 40,
+          "n_cells_eta_gt_0": 16
+        },
+        {
+          "species": "quadricolor",
+          "post_mean_eta": -0.03829600009398055,
+          "eta_hdi95_low": -3.031330925414791,
+          "eta_hdi95_high": 3.1351900432547004,
+          "n_cells": 5,
+          "n_cells_eta_gt_0": 2
+        },
+        {
+          "species": "campestris",
+          "post_mean_eta": -0.3411607630265798,
+          "eta_hdi95_low": -1.5716913033506517,
+          "eta_hdi95_high": 0.9115650147384746,
+          "n_cells": 15,
+          "n_cells_eta_gt_0": 6
+        },
+        {
+          "species": "terrestris",
+          "post_mean_eta": -1.3007490140783615,
+          "eta_hdi95_low": -2.120914648804781,
+          "eta_hdi95_high": -0.543053406589646,
+          "n_cells": 179,
+          "n_cells_eta_gt_0": 48
+        },
+        {
+          "species": "hypnorum",
+          "post_mean_eta": -1.313412682567865,
+          "eta_hdi95_low": -3.6373891287890863,
+          "eta_hdi95_high": 0.7625836276186785,
+          "n_cells": 7,
+          "n_cells_eta_gt_0": 3
+        },
+        {
+          "species": "norvegicus",
+          "post_mean_eta": -3.2529939289912635,
+          "eta_hdi95_low": -6.14545250307784,
+          "eta_hdi95_high": -0.6692643876649518,
+          "n_cells": 1,
+          "n_cells_eta_gt_0": 0
+        }
+      ]
+    },
+    "2030_2039": {
+      "n_draws": 1000,
+      "species_ranked": [
+        {
+          "species": "jonellus",
+          "post_mean_eta": 7.296768646610666,
+          "eta_hdi95_low": 2.147212729426047,
+          "eta_hdi95_high": 12.567030709614448,
+          "n_cells": 6,
+          "n_cells_eta_gt_0": 6
+        },
+        {
+          "species": "sylvestris",
+          "post_mean_eta": 5.55724064848763,
+          "eta_hdi95_low": 0.6206551863323959,
+          "eta_hdi95_high": 10.705357850421091,
+          "n_cells": 9,
+          "n_cells_eta_gt_0": 6
+        },
+        {
+          "species": "mesomelas",
+          "post_mean_eta": 5.261917535552062,
+          "eta_hdi95_low": 2.49037796175922,
+          "eta_hdi95_high": 8.357861498411504,
+          "n_cells": 13,
+          "n_cells_eta_gt_0": 8
+        },
+        {
+          "species": "mucidus",
+          "post_mean_eta": 5.125736019022539,
+          "eta_hdi95_low": 2.36672603424758,
+          "eta_hdi95_high": 8.6095866031706,
+          "n_cells": 7,
+          "n_cells_eta_gt_0": 4
+        },
+        {
+          "species": "wurflenii",
+          "post_mean_eta": 3.431336350283506,
+          "eta_hdi95_low": 0.6345186472428944,
+          "eta_hdi95_high": 6.14419695152486,
+          "n_cells": 14,
+          "n_cells_eta_gt_0": 9
+        },
+        {
+          "species": "pyrenaeus",
+          "post_mean_eta": 3.4019800627683194,
+          "eta_hdi95_low": 0.3181611977953519,
+          "eta_hdi95_high": 6.387752821050395,
+          "n_cells": 4,
+          "n_cells_eta_gt_0": 2
+        },
+        {
+          "species": "muscorum",
+          "post_mean_eta": 3.3714603162507326,
+          "eta_hdi95_low": 1.7402992362515852,
+          "eta_hdi95_high": 5.268995212118285,
+          "n_cells": 43,
+          "n_cells_eta_gt_0": 35
+        },
+        {
+          "species": "sicheli",
+          "post_mean_eta": 3.259009095404137,
+          "eta_hdi95_low": -0.11917370503353497,
+          "eta_hdi95_high": 6.677930246432762,
+          "n_cells": 8,
+          "n_cells_eta_gt_0": 5
+        },
+        {
+          "species": "humilis",
+          "post_mean_eta": 3.194516312114624,
+          "eta_hdi95_low": 1.293491223503405,
+          "eta_hdi95_high": 4.84059397327344,
+          "n_cells": 43,
+          "n_cells_eta_gt_0": 31
+        },
+        {
+          "species": "monticola",
+          "post_mean_eta": 3.1282130481806543,
+          "eta_hdi95_low": 0.8098693350225127,
+          "eta_hdi95_high": 5.506839650975177,
+          "n_cells": 6,
+          "n_cells_eta_gt_0": 3
+        },
+        {
+          "species": "soroeensis",
+          "post_mean_eta": 2.910251798486282,
+          "eta_hdi95_low": 0.448464853166872,
+          "eta_hdi95_high": 5.481687581155981,
+          "n_cells": 17,
+          "n_cells_eta_gt_0": 10
+        },
+        {
+          "species": "ruderarius",
+          "post_mean_eta": 2.8500475512693546,
+          "eta_hdi95_low": 0.7381739644792963,
+          "eta_hdi95_high": 4.543379896694294,
+          "n_cells": 29,
+          "n_cells_eta_gt_0": 20
+        },
+        {
+          "species": "vestalis",
+          "post_mean_eta": 2.556076983771638,
+          "eta_hdi95_low": -0.3931650053829454,
+          "eta_hdi95_high": 5.512714177271892,
+          "n_cells": 24,
+          "n_cells_eta_gt_0": 13
+        },
+        {
+          "species": "magnus",
+          "post_mean_eta": 2.288049445730508,
+          "eta_hdi95_low": -0.15208908900395252,
+          "eta_hdi95_high": 4.765495933106527,
+          "n_cells": 16,
+          "n_cells_eta_gt_0": 10
+        },
+        {
+          "species": "hortorum",
+          "post_mean_eta": 1.8454508723756404,
+          "eta_hdi95_low": 0.39126519121913167,
+          "eta_hdi95_high": 3.3241343125386997,
+          "n_cells": 65,
+          "n_cells_eta_gt_0": 40
+        },
+        {
+          "species": "lapidarius",
+          "post_mean_eta": 1.8389436330195443,
+          "eta_hdi95_low": -0.006802707542701097,
+          "eta_hdi95_high": 3.8042906914268078,
+          "n_cells": 57,
+          "n_cells_eta_gt_0": 34
+        },
+        {
+          "species": "sylvarum",
+          "post_mean_eta": 1.757564864205985,
+          "eta_hdi95_low": 0.354930464585428,
+          "eta_hdi95_high": 3.439590290722974,
+          "n_cells": 35,
+          "n_cells_eta_gt_0": 20
+        },
+        {
+          "species": "lucorum",
+          "post_mean_eta": 1.757561633140062,
+          "eta_hdi95_low": 0.17781419391384026,
+          "eta_hdi95_high": 3.349934028614933,
+          "n_cells": 50,
+          "n_cells_eta_gt_0": 30
+        },
+        {
+          "species": "ruderatus",
+          "post_mean_eta": 1.655007896707481,
+          "eta_hdi95_low": 0.32199611778203535,
+          "eta_hdi95_high": 2.8196713085481555,
+          "n_cells": 75,
+          "n_cells_eta_gt_0": 50
+        },
+        {
+          "species": "subterraneus",
+          "post_mean_eta": 1.4641576246708448,
+          "eta_hdi95_low": -1.2193666271525745,
+          "eta_hdi95_high": 4.260355065327211,
+          "n_cells": 6,
+          "n_cells_eta_gt_0": 3
+        },
+        {
+          "species": "bohemicus",
+          "post_mean_eta": 0.8421362440015648,
+          "eta_hdi95_low": -1.5726605382552599,
+          "eta_hdi95_high": 3.6232492094351367,
+          "n_cells": 11,
+          "n_cells_eta_gt_0": 6
+        },
+        {
+          "species": "quadricolor",
+          "post_mean_eta": 0.7434291347468822,
+          "eta_hdi95_low": -2.6808457341444405,
+          "eta_hdi95_high": 4.08777058281689,
+          "n_cells": 5,
+          "n_cells_eta_gt_0": 2
+        },
+        {
+          "species": "rupestris",
+          "post_mean_eta": 0.5869469715259886,
+          "eta_hdi95_low": -1.0795783624090947,
+          "eta_hdi95_high": 2.667704032771149,
+          "n_cells": 15,
+          "n_cells_eta_gt_0": 7
+        },
+        {
+          "species": "pratorum",
+          "post_mean_eta": 0.5208901150776347,
+          "eta_hdi95_low": -1.2529068946469013,
+          "eta_hdi95_high": 2.343913249934114,
+          "n_cells": 40,
+          "n_cells_eta_gt_0": 18
+        },
+        {
+          "species": "barbutellus",
+          "post_mean_eta": 0.4556213474187136,
+          "eta_hdi95_low": -0.4711033180048122,
+          "eta_hdi95_high": 1.3744841904914675,
+          "n_cells": 21,
+          "n_cells_eta_gt_0": 13
+        },
+        {
+          "species": "pascuorum",
+          "post_mean_eta": 0.3941735417692974,
+          "eta_hdi95_low": -0.8279079197419992,
+          "eta_hdi95_high": 1.7442021891841895,
+          "n_cells": 111,
+          "n_cells_eta_gt_0": 49
+        },
+        {
+          "species": "mendax",
+          "post_mean_eta": 0.3905559407620366,
+          "eta_hdi95_low": -1.9982555992762316,
+          "eta_hdi95_high": 2.5741388132002125,
+          "n_cells": 4,
+          "n_cells_eta_gt_0": 2
+        },
+        {
+          "species": "norvegicus",
+          "post_mean_eta": -0.16098511999533444,
+          "eta_hdi95_low": -3.100064185280914,
+          "eta_hdi95_high": 2.292921792714537,
+          "n_cells": 1,
+          "n_cells_eta_gt_0": 0
+        },
+        {
+          "species": "terrestris",
+          "post_mean_eta": -0.9307580860156547,
+          "eta_hdi95_low": -1.8072765068331944,
+          "eta_hdi95_high": -0.025926276776109987,
+          "n_cells": 179,
+          "n_cells_eta_gt_0": 54
+        },
+        {
+          "species": "campestris",
+          "post_mean_eta": -1.0820896049559616,
+          "eta_hdi95_low": -2.149194673882093,
+          "eta_hdi95_high": -0.08128853213294215,
+          "n_cells": 15,
+          "n_cells_eta_gt_0": 4
+        },
+        {
+          "species": "hypnorum",
+          "post_mean_eta": -3.0581329344088255,
+          "eta_hdi95_low": -4.980837167756283,
+          "eta_hdi95_high": -1.2226431061903207,
+          "n_cells": 7,
+          "n_cells_eta_gt_0": 2
+        }
+      ]
+    }
+  },
+  "method": {
+    "n_posterior_draws": 1000,
+    "substrate": "HEALPix-NESTED nside=128 (~46 km cells)",
+    "option": "C (GLMM and projection both at nside=128 \u2014 substrates match)",
+    "scaling_source": "Tier-1 nside=128 healpix_port/outputs_iberia/dataGLMM_extinction.parquet z-score constants (mean + ddof=1 SD per raw column; cross-checked against the saved sc_ columns to <= 1e-6)",
+    "scaling_constants": {
+      "sampling": {
+        "mean": 70.87820434570312,
+        "sd": 75.77880859375,
+        "max_check_diff": 0.0
+      },
+      "TEI_bs": {
+        "mean": 0.4546792805194855,
+        "sd": 0.0562310665845871,
+        "max_check_diff": 0.0
+      },
+      "TEI_delta": {
+        "mean": 0.030169682577252388,
+        "sd": 0.0067075989209115505,
+        "max_check_diff": 0.0
+      },
+      "PEI_bs": {
+        "mean": 0.30742189288139343,
+        "sd": 0.12048803269863129,
+        "max_check_diff": 0.0
+      },
+      "PEI_delta": {
+        "mean": -0.005335940048098564,
+        "sd": 0.03710140660405159,
+        "max_check_diff": 0.0
+      }
+    },
+    "sampling_effort_assumption": "held at recent-period (2000-2014) mean per cell",
+    "data_source": "DestinE Climate DT SSP3-7.0 IFS-NEMO standard (licence-restricted; access via DestinE Data Lake)",
+    "tier1_posterior": "results/posterior_bambi_healpix.nc",
+    "design_columns": [
+      "Intercept",
+      "sc_sampling",
+      "sc_TEI_bs",
+      "sc_TEI_delta",
+      "sc_TEI_bs:sc_TEI_delta",
+      "sc_PEI_bs",
+      "sc_PEI_delta",
+      "sc_PEI_bs:sc_PEI_delta",
+      "sc_TEI_bs:sc_PEI_bs",
+      "sc_TEI_delta:sc_PEI_delta"
+    ],
+    "posterior_total_samples": 4000,
+    "rng_seed": 42,
+    "headline_metric": "post_mean_eta",
+    "headline_metric_comment": "Per-species posterior-mean of (mean \u03b7 across cells), 95% HDI in log-odds units. We report \u03b7 \u2014 the GLMM linear predictor \u2014 rather than p = expit(\u03b7) because future TEI/PEI z-scores under SSP3-7.0 lie outside the Tier-1 training distribution (the future warming signal is large), where expit() saturates near 1.0 uninformatively. Ranking by \u03b7 preserves the GLMM's authentic signal; relative-risk-style comparisons (e.g. n_cells_eta_gt_0) are more substrate-stable than absolute probabilities. The Option-C substrate-matched standardisation cures the \u03c3-scale-mismatch inflation that the sibling-repo Option B suffered (\u03b2 trained against \u03c3_nside64, evaluated on \u03c3_nside128), but does not shrink the future warming itself."
+  }
+}

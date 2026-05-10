@@ -1,9 +1,7 @@
 # Single source of truth for the runtime — used by local dev, Docker, and CI.
 # This is the Option C HEALPix nside=128 sibling of
 # `annefou/weatherxbiodiversity-projection` (which runs the same pipeline at
-# nside=64). The dep set is the Tier-1 subset of the reference repo --
-# DestinE-specific Tier-2 deps (polytope-client, earthkit-data) are NOT
-# installed here because Tier 2 is out of scope for this initial dispatch.
+# nside=64). Tier 1 + Tier 2 (DestinE Climate DT projection) are both in scope.
 name: "weatherxbiodiversity-projection-nside128"
 channels:
   - conda-forge
@@ -44,11 +42,25 @@ dependencies:
   - healpix-geo
   # --- map plotting (Iberia coverage + figures) ---
   - cartopy                  # Iberia coastline maps (conda preferred — C/PROJ extension)
+  # --- Tier 2 only (DestinE Climate DT projection) ---
+  # Required by 05_destine_download.py / 06_destine_clean.py /
+  # 07_projection.py / 08_projection_figures.py. 05 is guarded by
+  # `_tier2_guard.py` and skips cleanly when DestinE credentials are
+  # absent; 06/07/08 only need the GRIBs to be on disk. Installing on
+  # a non-DestinE host is safe but unused (until GRIBs land).
+  - eccodes                  # ECMWF GRIB C library (with Python bindings)
+  - python-eccodes           # explicit Python binding (sometimes split out)
   - pip
   - pip:
     # snakemake on conda-forge fails to solve under setup-micromamba@v3 —
     # install via pip. See docs/cicd-conventions.md.
     - snakemake
+    # earthkit-data + polytope-client are pip-only on the DestinE
+    # Jupyter image (conda-forge solver can't satisfy them in the
+    # destine_climate_dt platform image as of 2026-05). Install via pip
+    # to keep the env reproducible on both DestinE and a local Mac.
+    - earthkit-data
+    - polytope-client
     # healpix-plot is the EOPF-DGGS canonical HEALPix+cartopy plotting
     # library (per DOMAIN.md: "replaces ad-hoc ang2pix + pcolormesh
     # bridges"). Resamples HEALPix to a regular grid via
