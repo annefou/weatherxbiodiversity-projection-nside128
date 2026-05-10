@@ -48,6 +48,6 @@ snakemake --cores 1 tier2      # Tier 2 (DestinE) — needs DestinE credentials
 
 If you use this work, please cite:
 
-- This software: [`CITATION.cff`](https://github.com/annefou/weatherxbiodiversity-projection-nside128/blob/main/CITATION.cff) → DOI [{{ZENODO_DOI}}]({{ZENODO_DOI}}).
+- This software: [`CITATION.cff`](https://github.com/annefou/weatherxbiodiversity-projection-nside128/blob/main/CITATION.cff) → DOI [10.5281/zenodo.20113780](https://doi.org/10.5281/zenodo.20113780).
 - The original paper: [10.1126/science.aax8591](https://doi.org/10.1126/science.aax8591).
 - The canonical nside=64 sibling and the substrate-sensitivity diagnostic via their own DOIs (see CITATION.cff `references`).
