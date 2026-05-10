@@ -285,3 +285,8 @@ out_path = FIG_DIR / "main_result_healpix.png"
 fig.savefig(out_path, dpi=150, bbox_inches="tight")
 plt.show()
 print(f"\nSaved {out_path}")
+
+# %% [markdown]
+# ## Headline Tier-1 figure (committed)
+#
+# ![Tier-1 HEALPix nside=128 GLMM coefficient summary — sc_TEI_delta = +0.347, 95% HDI [+0.139, +0.533], substrate-robust against the canonical CEA replication](../figures/main_result_healpix.png)
