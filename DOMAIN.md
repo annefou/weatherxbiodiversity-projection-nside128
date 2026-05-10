@@ -28,10 +28,42 @@ When the user asks Claude to set up a typical analysis, the default tools to sug
 | Map projections | `pyproj`, `cartopy` | |
 | Raster / vector I/O | `rasterio`, `geopandas` | |
 | Scattering on the sphere | `foscat>=2026.4.1` | upstream PyPI; CPU auto-detection |
+| Intermediate / archival arrays | `netCDF4` (small ≤2 GB), `zarr` (larger / cloud) | **never `.npz`** — see Data formats convention below |
+| HEALPix-indexed EO archival | EOPF Zarr (Earth Observation Processing Framework profile) | Standardised metadata for HEALPix dim-naming, NESTED ordering, projection. See [`EOPF-DGGS/legacy-converters`](https://github.com/EOPF-DGGS/legacy-converters) for conversion patterns. |
 
 Pin every dependency in `environment.yml` — pangeo dev environments hide missing deps locally and CI then silently fails with empty notebook cells.
 
 ## Domain conventions
+
+### Data formats — prefer NetCDF / Zarr over `.npz`
+
+For intermediate artefacts between notebooks, **never use `.npz`** as the storage format. NumPy's `.npz` is pickle-based, Python-specific, and not self-describing — it loses dimension labels, units, CRS metadata, and the kind of information downstream tools (other notebooks, other languages, FAIR-RDM platforms, the FORRT chain's audit trail) actually need.
+
+Use the following hierarchy:
+
+- **NetCDF (`.nc`)** — for arrays up to ~2 GB. Self-describing via CF conventions, language-agnostic, the standard for terrestrial climate and EO data. Read/write via `xarray.Dataset.to_netcdf()` / `xr.open_dataset()`. Default choice for most intermediate artefacts in this domain.
+- **Zarr (`.zarr`)** — for larger arrays, cloud-native workflows, or when chunked I/O matters. Self-describing, lazy via `dask`, the standard for petabyte-scale EO archives. Read/write via `xarray.Dataset.to_zarr()` / `xr.open_zarr()`. Use when arrays exceed ~2 GB or live in object storage (S3, GCS).
+- **EOPF Zarr** (Earth Observation Processing Framework Zarr profile) — for HEALPix-indexed EO data. Standardises HEALPix dimension naming, NESTED/RING declaration, and projection metadata so the archive is reusable across EOPF-aware tooling (xdggs, eopf-zarr, eopf-dggs). Conversion patterns from legacy formats (NetCDF / GeoTIFF / HEALPix-NumPy) live in [`EOPF-DGGS/legacy-converters`](https://github.com/EOPF-DGGS/legacy-converters) — *currently private; will be public soon. Until then, ask the project maintainer for access if you need worked examples.*
+
+**Anti-patterns:**
+
+- `np.savez(...)` / `np.savez_compressed(...)` — drops all metadata; brittle across NumPy versions; not citable as a self-describing artefact.
+- `pickle.dump(...)` for arrays — language-locked, version-locked, not interoperable with FAIR-RDM platforms.
+- Custom HDF5 layouts when NetCDF would do — adds reader complexity for no gain.
+- Plain CSV for arrays >100k rows or >10 columns — unindexable, slow, no dim metadata.
+
+**Quick decision tree:**
+
+| Artefact | Format |
+|---|---|
+| Tabular results (rank lists, summary tables, GLMM coefficients) | CSV or Parquet |
+| Posterior draws (multi-dim, with named dims) | NetCDF (`idata.nc`) |
+| Per-cell × per-time arrays (TEI, climate fields) ≤2 GB | NetCDF |
+| Per-cell × per-time arrays >2 GB or cloud-archived | Zarr |
+| HEALPix-indexed climate / EO inputs | EOPF Zarr (or NetCDF if the source delivers it) |
+| Figures | PNG (display) + PDF (publication) |
+
+If you find yourself reaching for `.npz`, you've picked the wrong tool — pause and use one of the formats above.
 
 ### HEALPix is always NESTED, never RING
 
