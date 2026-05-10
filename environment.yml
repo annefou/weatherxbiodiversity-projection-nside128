@@ -1,45 +1,58 @@
 # Single source of truth for the runtime — used by local dev, Docker, and CI.
-# Add every dependency a notebook imports here. Local "kitchen-sink" envs
-# (e.g. pangeo) hide missing deps; CI builds strictly from this file and will
-# silently produce empty notebook cells if anything is missing.
+# This is the Option C HEALPix nside=128 sibling of
+# `annefou/weatherxbiodiversity-projection` (which runs the same pipeline at
+# nside=64). The dep set is the Tier-1 subset of the reference repo --
+# DestinE-specific Tier-2 deps (polytope-client, earthkit-data) are NOT
+# installed here because Tier 2 is out of scope for this initial dispatch.
 name: "weatherxbiodiversity-projection-nside128"
 channels:
   - conda-forge
 dependencies:
   - python=3.12
-  # --- core scientific stack ---
+  # --- upstream-required scientific stack ---
   - numpy
   - pandas>=2.0
   - xarray>=2024.6
   - scipy
   - matplotlib
-  - pyarrow
-  # --- notebook execution + Jupyter Book ---
+  - statsmodels              # variational-Bayes GLMM (BinomialBayesMixedGLM)
+  # --- Bayesian MCMC (full posterior covariance for the substrate-robustness verdict) ---
+  # arviz<0.22 because pymc 5.28 still does `from arviz import concat`,
+  # which was removed in arviz 0.22+ (1.x is the modular split). Pin
+  # arviz first; bambi/pymc/pytensor follow conda-forge's compatible
+  # selections.
+  - arviz<0.22
+  - bambi                    # high-level GLMM fit on top of pymc
+  - pymc                     # MCMC backend (NUTS via pytensor)
+  - pyarrow                  # parquet I/O for dataGLMM intermediate
+  - pyproj                   # WGS84 / CRS helpers
+  - netcdf4                  # CRU TS NetCDF reading
+  - requests                 # GBIF + figshare HTTP downloads
+  # --- notebook execution + Jupyter Book build (CI uses these) ---
   - jupytext
   - jupyterlab
   - nbclient
   - ipykernel
-  # --- replace/extend with the deps your replication needs ---
-  # Examples (uncomment as needed):
-  # - statsmodels             # GLM/GLMM regression
-  # - scikit-learn            # classical ML
-  # - pyproj                  # CRS + map projections
-  # - cartopy                 # geographic plotting
-  # - netcdf4                 # NetCDF I/O — preferred over .npz for arrays (see DOMAIN.md)
-  # - zarr                    # Zarr — preferred for arrays >2 GB or cloud-archived (see DOMAIN.md)
-  # - cdsapi                  # Copernicus Climate Data Store
-  # - copernicusmarine        # Copernicus Marine Service
-  # - healpix-geo             # HEALPix on geo data — preferred (use nest=True — see DOMAIN.md)
-  # - healpy                  # HEALPix on pure-sphere (astrophysics) only
-  # - rasterio                # raster I/O
-  # - geopandas               # vector I/O
-  # - dask                    # out-of-core / parallel
+  # --- HEALPix substrate (geo-aware, NOT cosmology-first) ---
+  # healpix-geo (NOT healpy) for the WGS84-aware HEALPix conversion
+  # used everywhere in healpix_port/. healpy is non-geo-aware
+  # (cosmology-first; lon convention 0-360, no CRS handling) and
+  # accumulates small biases over decadal time series, which is
+  # unacceptable for biodiversity-precision climate-impact work over
+  # Iberia (DOMAIN.md). Per DOMAIN.md HEALPix is always NESTED, always
+  # WGS84.
+  - healpix-geo
+  # --- map plotting (Iberia coverage + figures) ---
+  - cartopy                  # Iberia coastline maps (conda preferred — C/PROJ extension)
   - pip
   - pip:
     # snakemake on conda-forge fails to solve under setup-micromamba@v3 —
     # install via pip. See docs/cicd-conventions.md.
     - snakemake
-    # Add pip-only deps here, e.g.:
-    # - pygbif
-    # - polytope-client       # Destination Earth Climate DT
-    # - earthkit-data
+    # healpix-plot is the EOPF-DGGS canonical HEALPix+cartopy plotting
+    # library (per DOMAIN.md: "replaces ad-hoc ang2pix + pcolormesh
+    # bridges"). Resamples HEALPix to a regular grid via
+    # nearest/bilinear and renders cleanly in any cartopy projection;
+    # avoids the polygon-overlap artefacts of manual PolyCollection.
+    # PyPI-only as of 2026-05; small dep (~1 MB).
+    - healpix-plot

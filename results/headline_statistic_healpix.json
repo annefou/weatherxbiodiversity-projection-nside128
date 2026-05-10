@@ -1,0 +1,63 @@
+{
+  "healpix_fit": {
+    "nside": 128,
+    "depth": 7,
+    "scheme": "NESTED",
+    "ellipsoid": "WGS84",
+    "n_cells_iberia": 480,
+    "n_cells_in_fit": 196,
+    "n_species": 31,
+    "median_records_per_species_per_period": 27.0,
+    "sc_TEI_delta_mean": 0.3466720035530307,
+    "sc_TEI_delta_sd": 0.0788805088558443,
+    "p_2sided": 1.108234019975285e-05,
+    "hdi95_low": 0.139,
+    "hdi95_high": 0.533,
+    "marginal_R2": null
+  },
+  "weatherxbio_v0_2_1_cea": {
+    "sc_TEI_delta_mean": 0.479,
+    "sc_TEI_delta_sd": 0.109,
+    "ci95_low": 0.26536,
+    "ci95_high": 0.6926399999999999,
+    "source": "weatherxbio v0.2.1 / soroye_port/outputs_iberia/posterior_vb_summary.csv",
+    "framing": "external reference for substrate-robustness check (NOT this repo's local CEA rerun -- this repo does not run CEA at all)"
+  },
+  "annefou_nside64_2026_05": {
+    "sc_TEI_delta_mean": 0.454,
+    "sc_TEI_delta_sd": 0.115,
+    "ci95_low": 0.2286,
+    "ci95_high": 0.6794,
+    "source": "annefou/weatherxbiodiversity-projection b7cdd47 (HEALPix nside=64 NESTED, WGS84)",
+    "framing": "internal cross-substrate reference"
+  },
+  "substrate_robustness": {
+    "sign_positive": true,
+    "significant_p_lt_05": true,
+    "magnitude_within_30pct_of_cea": true,
+    "magnitude_within_30pct_of_nside64": true,
+    "vs_cea_within_30pct": true,
+    "vs_nside64_within_30pct": true,
+    "all_three_pass_vs_cea": true,
+    "all_three_pass_vs_nside64": true,
+    "all_three_pass_vs_both": true,
+    "tolerance_band_vs_cea_mean": [
+      0.3353,
+      0.6227
+    ],
+    "tolerance_band_vs_nside64_mean": [
+      0.31779999999999997,
+      0.5902000000000001
+    ],
+    "verdict": "Substrate-robust",
+    "comment": "HEALPix nside=128 NESTED fit recovers sc_TEI_delta = +0.347 (p = 1.11e-05), within +-30% of BOTH the weatherxbio v0.2.1 CEA value (+0.479) AND the reference repo's nside=64 fit (+0.454). The mechanism is substrate-robust at the finer ~46 km scale -- substrate-robustness now demonstrated across CEA, nside=64 and nside=128."
+  },
+  "mcmc": {
+    "sc_TEI_delta_mean": 0.343,
+    "sc_TEI_delta_sd": 0.102,
+    "sc_TEI_delta_hdi95_low": 0.139,
+    "sc_TEI_delta_hdi95_high": 0.533,
+    "vb_sd_underestimation_factor": 1.2930951065035219,
+    "comment": "MCMC posterior on HEALPix nside=128 substrate -- VB sd is a lower bound on true posterior uncertainty."
+  }
+}
