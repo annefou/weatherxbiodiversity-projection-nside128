@@ -13,12 +13,13 @@ This file is the canonical registry of published nanopub URIs for this replicati
 | 05 | FORRT Replication Outcome | _not yet published_ | |
 | 06 | CiTO Citation | _not yet published_ | |
 
-## Optional layers
+## Optional layer
 
 | Step | Template | URI | Published |
 |---|---|---|---|
-| 07 | Research Software (if applicable) | _not applicable / not yet published_ | |
-| 08 | Research Synthesis (if applicable) | _not applicable / not yet published_ | |
+| 07 | Research Software | _not yet published_ | |
+
+(Research Synthesis is not published from this chain — see the methodological sibling `weatherxbiodiversity-substrate-sensitivity` for the cross-chain synthesis.)
 
 ## Format
 
