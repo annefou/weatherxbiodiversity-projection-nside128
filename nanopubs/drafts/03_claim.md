@@ -11,7 +11,7 @@
 Slug becomes part of the nanopub URI. Use kebab-case.
 
 ```
-
+soroye2020-tei-delta-positive-iberia-nside128
 ```
 
 ### Label of the claim (text input, required)
@@ -19,7 +19,7 @@ Slug becomes part of the nanopub URI. Use kebab-case.
 A descriptive title (not a sentence). Used for searches/discovery.
 
 ```
-
+TEI_delta GLMM coefficient is positive and credibly above zero on Iberian Bombus at HEALPix nside=128
 ```
 
 ### Search for an AIDA sentence (search/select, required)
@@ -29,7 +29,7 @@ URI of the AIDA published in step 02. Pull from `nanopubs/PUBLISHED.md`.
 > _If the AIDA was published via Nanodash (`w3id.org/np/...` namespace), the platform's search may not find it — paste the URI manually._
 
 ```
-
+<replace-with-published-AIDA-URI-from-step-02>
 ```
 
 ### Type of FORRT claim (dropdown, required)
@@ -42,7 +42,9 @@ Pick one. See `docs/claim-type-vocabulary.md` for the seven options and how to c
 - [ ] data governance
 - [ ] descriptive pattern
 - [ ] model performance
-- [ ] statistical significance
+- [x] **statistical significance**
+
+The claim is about a posterior credible interval on a GLMM coefficient: the 95% HDI on β_sc_TEI_delta excludes zero with the same sign and order of magnitude as Soroye 2020 and as the canonical nside=64 sibling. Same claim type as the canonical sibling chain — the substrate is the only methodological difference.
 
 ### Source URI (text input, optional)
 

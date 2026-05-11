@@ -11,28 +11,18 @@
 URI of the Outcome published in step 05. Pull from `nanopubs/PUBLISHED.md`.
 
 ```
-
+<replace-with-published-Outcome-URI-from-step-05>
 ```
 
 ### List citations (repeatable group, required ≥1)
 
-#### Citation 1 — back to the original paper
+#### Citation 1 — back to the original paper (Soroye 2020)
 
 ##### Citation Type (dropdown)
 
-Choose based on the Outcome's validation status:
+- [x] **`confirms`**
 
-- Validated → `confirms`
-- PartiallySupported → `qualifies`
-- Contradicted → `disputes`
-
-For question-rooted chains where there is no original paper to confirm/dispute, use `usesMethodIn` or `citesAsAuthority` for the methodology paper(s).
-
-> **Note:** `replicates` is NOT in the Science Live dropdown (despite existing in upstream CiTO). When citing a notebook/tutorial that was directly reused, use **`credits`** instead.
-
-```
-
-```
+(Outcome verdict is Validated, which maps to CiTO `confirms`. The substrate extension at HEALPix nside=128 confirms the same TEI mechanism Soroye et al. proposed.)
 
 ##### DOI or other URL of the cited work (text input)
 
@@ -40,11 +30,37 @@ For question-rooted chains where there is no original paper to confirm/dispute, 
 https://doi.org/10.1126/science.aax8591
 ```
 
-#### Additional citations (optional)
+#### Citation 2 — extends the canonical nside=64 sibling chain
 
-If the Outcome cites methods papers, related replications, or upstream tools, add them here.
+##### Citation Type (dropdown)
 
-- _Type: ___ → URL: ___
+- [x] **`extends`**
+
+(This Study is a methodological substrate extension of the canonical Iberian *Bombus* replication, refitting the GLMM at a finer resolution. Both substrates' Outcomes report consistent substrate-robustness.)
+
+##### DOI or other URL of the cited work (text input)
+
+```
+https://doi.org/10.5281/zenodo.20113777
+```
+
+(Concept DOI of `weatherxbiodiversity-projection`. Or, once published, paste the canonical nside=64 sibling Outcome URI directly.)
+
+#### Citation 3 — extends the methodological substrate-sensitivity sibling chain
+
+##### Citation Type (dropdown)
+
+- [x] **`extends`**
+
+(The substrate-sensitivity sibling chain documents the projection-time grid-coupling diagnostic and the recommended reporting protocol that this Outcome's per-species ranking is filtered against.)
+
+##### DOI or other URL of the cited work (text input)
+
+```
+https://doi.org/10.5281/zenodo.20113786
+```
+
+(Concept DOI of `weatherxbiodiversity-substrate-sensitivity`.)
 
 ## Publication note
 

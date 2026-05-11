@@ -25,13 +25,13 @@ Format: starts with `10.` — bare DOI, **NOT** `https://doi.org/...` form.
 
 Verbatim from the paper PDF in `paper/`. Character-for-character. ≤ 500 chars in whole-text mode.
 
-> _Read the PDF first. Don't paraphrase from memory. See `docs/verify-before-drafting.md`._
+Source: Soroye, Newbold, Kerr (2020), *Science* 367(6478): 685, **Abstract** (p. 685, second-to-last sentence of the abstract paragraph).
 
 ```
-
+Increasing frequency of hotter temperatures predicts species' local extinction risk, chances of colonizing a new area, and changing species richness.
 ```
 
-Character count: ___ / 500.
+Character count: 149 / 500.
 
 ### Comment (textarea, required)
 
@@ -40,7 +40,7 @@ Subtitle: *"Our interpretation or explanation of why this quotation is relevant.
 Why this quote matters and what the replication tests. Connect the paper's claim to the work this repo does. Don't repeat the quote.
 
 ```
-
+This sentence states the mechanism — frequency of temperatures exceeding species' historical thermal tolerances drives local extinction, colonization, and richness change — that our replication propagates forward in time. The original paper validated this mechanism retrospectively for 66 Bombus species across North America and Europe at ~50 km / monthly resolution. This repository extends the canonical Iberian Bombus replication (weatherxbiodiversity-projection at HEALPix nside=64) by refitting the entire GLMM at the native pixelisation of DestinE Climate DT IFS-NEMO standard — HEALPix nside=128 (~46 km cells), four times finer than the canonical sibling. Tier 1 confirms the GLMM coefficient on TEI_delta is substrate-robust across three pixelisations (CEA, nside=64, nside=128) within ±30%. Tier 2 projects the substrate-matched GLMM to SSP3-7.0 without any cross-substrate aggregation step. We anchor on this sentence (rather than on the 46% / 17% North America / Europe occupancy-decline headline) because the replication tests the mechanism, not the historical numbers.
 ```
 
 ## Publication note

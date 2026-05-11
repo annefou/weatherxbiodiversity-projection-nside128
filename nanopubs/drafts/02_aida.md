@@ -46,14 +46,14 @@ DOIs/URLs of datasets that ground the AIDA claim.
 
 - CRU TS 3.24.01 climate (Soroye Figshare bundle, kept identical to original)
 - GBIF Iberian Bombus occurrence download DOI (own-issued; record the DOI here once minted)
-- This repo's Zenodo concept DOI: `<replace-with-Zenodo-concept-DOI>`
+- This repo's Zenodo concept DOI: `10.5281/zenodo.20113780`
 
 ### Supported by other publications (repeatable group, optional)
 
 DOIs/URLs of publications that support the AIDA claim — e.g. peer-reviewed methods papers, or the original paper if not already cited via the Quote.
 
 - 10.1126/science.aax8591 (Soroye, Newbold & Kerr 2020 — original paper; cited via the Quote in step 01)
-- The canonical nside=64 sibling repo's Zenodo concept DOI: `<replace-with-nside64-sibling-Zenodo-concept-DOI>` (the substrate-extension companion)
+- The canonical nside=64 sibling repo's Zenodo concept DOI: `10.5281/zenodo.20113777` (the canonical Iberian Bombus replication this study extends)
 
 > **Known platform bug (2026-04-26):** if both *Supported by datasets* AND *Supported by other publications* are populated and publishing fails, fall back to publishing this AIDA via Nanodash. The URI namespace becomes `https://w3id.org/np/...` (still valid and citable).
 
