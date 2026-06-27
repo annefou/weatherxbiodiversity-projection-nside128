@@ -8,6 +8,8 @@ This repository fits Soroye et al.'s (2020) thermal-niche extirpation GLMM at **
 
 It is a sibling resolution-doubling extension of [`weatherxbiodiversity-projection`](https://github.com/annefou/weatherxbiodiversity-projection) (nside=64). The combined results across substrates feed the methodological diagnostic in [`weatherxbiodiversity-substrate-sensitivity`](https://github.com/annefou/weatherxbiodiversity-substrate-sensitivity).
 
+> **HEALPix terminology (GRID4EARTH).** This study uses HEALPix at `nside = 128`. In the GRID4EARTH / [`healpix-geo`](https://healpix-geo.readthedocs.io/) vocabulary that is **depth 7** (`nside = 2**depth`). HEALPix bins are **cells** (each addressed by a `uint64` **`ipix`** index) in **NESTED** ordering, evaluated on the **WGS84 ellipsoid** via the authalic-sphere mapping — not a bare sphere. We keep the `nside` spelling (and the repo name) for healpy-compatibility, but the equal-area guarantee comes from the ellipsoidal (`ellipsoid="WGS84"`) path.
+
 ## Headline result — Tier 1
 
 ![Tier-1 GLMM coefficient summary at HEALPix nside=128 — sc_TEI_delta = +0.347, 95% HDI [+0.139, +0.533], substrate-robust against the canonical CEA replication](figures/main_result_healpix.png)
